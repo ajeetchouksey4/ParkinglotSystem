@@ -1,0 +1,15 @@
+create_parking_lot 6
+park MP­04­AB­1234 White
+park MP­04­KA­4321 Red
+park MP­04­PO­1221 Blue
+park MP­04­TR­2121 White
+park MP­04­DC­0000 Black
+park MP­04­CQ­2332 Green
+leave 4
+status
+park MP­04­TR­2121 White
+park MP­14­CT­1001 Black
+registration_numbers_for_cars_with_colour White
+slot_numbers_for_cars_with_colour White
+slot_number_for_registration_number MP­04­DC­0000
+slot_number_for_registration_number MP­04­KA­4321
