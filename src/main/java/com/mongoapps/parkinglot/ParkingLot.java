@@ -44,7 +44,10 @@ public class ParkingLot {
 			availableSlotList.add(i);
 		}
 		this.map1 = new HashMap<String, Car>();
-		
+		this.map2 = new HashMap<String, String>();
+		this.map3 = new HashMap<String, ArrayList<String>>();
+		System.out.println("Created parking lot with " + lotCount + " slots");
+		System.out.println();
 	}
 
 	public void park(String regNo, String color) {
