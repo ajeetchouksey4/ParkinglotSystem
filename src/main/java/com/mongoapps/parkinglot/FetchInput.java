@@ -22,7 +22,7 @@ public class FetchInput {
 				if (method != null) {
 					method.invoke(parkingLot);
 				} else {
-					System.out.println("Oops!! Invalid input");
+					System.out.println("Invalid input");
 				}
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
@@ -36,7 +36,7 @@ public class FetchInput {
 				if (method != null) {
 					method.invoke(parkingLot, inputs[1]);
 				} else {
-					System.out.println("Oops!! Invalid input");
+					System.out.println("Invalid input");
 				}
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
@@ -50,7 +50,7 @@ public class FetchInput {
 				if (method != null) {
 					method.invoke(parkingLot, inputs[1], inputs[2]);
 				} else {
-					System.out.println("Oops!! Invalid input");
+					System.out.println("Invalid input");
 				}
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
@@ -59,7 +59,7 @@ public class FetchInput {
 			}
 			break;
 		default:
-			System.out.println("Oops!! Invalid input");
+			System.out.println("Invalid input.");
 		}
 	}
 

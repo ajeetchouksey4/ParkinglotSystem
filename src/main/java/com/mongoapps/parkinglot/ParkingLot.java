@@ -54,19 +54,18 @@ public class ParkingLot {
 	}
 
 	public void park(String regNo, String color) {
-
 		if (this.MAX_SIZE == 0) {
-			System.out.println("Sorry!! Parking is not created");
+			System.out.println("Sorry, parking lot is not created");
 			System.out.println();
 		} else if (this.map1.size() == this.MAX_SIZE) {
-			System.out.println("Sorry!! Parking is full");
+			System.out.println("Sorry, parking lot is full");
+			System.out.println();
 		} else {
 			Collections.sort(availableSlotList);
 			String slot = availableSlotList.get(0).toString();
 			Car car = new Car(regNo, color);
 			this.map1.put(slot, car);
 			this.map2.put(regNo, slot);
-
 			if (this.map3.containsKey(color)) {
 				ArrayList<String> regNoList = this.map3.get(color);
 				this.map3.remove(color);
@@ -77,18 +76,15 @@ public class ParkingLot {
 				regNoList.add(regNo);
 				this.map3.put(color, regNoList);
 			}
-
 			System.out.println("Allocated slot number: " + slot);
 			System.out.println();
 			availableSlotList.remove(0);
-
 		}
-
 	}
 
 	public void leave(String slotNo) {
 		if (this.MAX_SIZE == 0) {
-			System.out.println("Sorry!! Parking is not created");
+			System.out.println("Sorry, parking lot is not created");
 			System.out.println();
 		} else if (this.map1.size() > 0) {
 			Car carToLeave = this.map1.get(slotNo);
@@ -108,14 +104,14 @@ public class ParkingLot {
 				System.out.println();
 			}
 		} else {
-			System.out.println("Sorry!! Parking lot is empty");
+			System.out.println("Parking lot is empty");
 			System.out.println();
 		}
 	}
 
 	public void status() {
 		if (this.MAX_SIZE == 0) {
-			System.out.println("Sorry!! Parking is not created");
+			System.out.println("Sorry, parking lot is not created");
 			System.out.println();
 		} else if (this.map1.size() > 0) {
 			// Print the current status.
@@ -137,7 +133,7 @@ public class ParkingLot {
 
 	public void getRegistrationNumbersFromColor(String color) {
 		if (this.MAX_SIZE == 0) {
-			System.out.println("Sorry!! Parking is not created");
+			System.out.println("Sorry, parking lot is not created");
 			System.out.println();
 		} else if (this.map3.containsKey(color)) {
 			ArrayList<String> regNoList = this.map3.get(color);
@@ -157,7 +153,7 @@ public class ParkingLot {
 
 	public void getSlotNumbersFromColor(String color) {
 		if (this.MAX_SIZE == 0) {
-			System.out.println("Sorry!! Parking is not created");
+			System.out.println("Sorry, parking lot is not created");
 			System.out.println();
 		} else if (this.map3.containsKey(color)) {
 			ArrayList<String> regNoList = this.map3.get(color);
@@ -183,7 +179,7 @@ public class ParkingLot {
 
 	public void getSlotNumberFromRegNo(String regNo) {
 		if (this.MAX_SIZE == 0) {
-			System.out.println("Sorry!! Parking is not created");
+			System.out.println("Sorry, parking lot is not created");
 			System.out.println();
 		} else if (this.map2.containsKey(regNo)) {
 			System.out.println(this.map2.get(regNo));

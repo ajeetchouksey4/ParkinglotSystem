@@ -1,3 +1,3 @@
 com\mongoapps\parkinglot\CommandsTest.class
+com\mongoapps\parkinglot\FetchInputTest.class
 com\mongoapps\parkinglot\ParkingLotTest.class
-com\mongoapps\parkinglot\InputParserTest.class
