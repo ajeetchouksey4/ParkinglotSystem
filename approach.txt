@@ -1,0 +1,41 @@
+#This file is referring as approach doc
+@author Ajeet Chouksey
+@since SEPT 2021
+@version 1.0.0
+
+While building out this system, following things i kept in mind
+1) Taking user input, according to validation
+2) if wrong input pass/exit functionality.
+2) utilities implementation like:
+	-- creation of lot
+	-- to park a car
+	-- status ( to check the availability )
+	-- when any car leave ( same place should be allocated to different car)
+	-- registration numbers for cars with colour 
+	-- slot numbers for cars with colour
+3) All validation, need to be take care
+4) JUnit test cases to test the entire functionality.
+
+Code Designing and development:
+-------------------------------
+1) Main.java
+	-- This java class is mainly responsible for handling user input and exit functionality.
+	-- 
+2) FetchInput.java	
+	-- This file is mainly responsible for taking user input data, divide into array of string and count of array if size
+		case 1: request for status check
+		case 2: leave request with any slot
+		case 3: park request with car no and color code || to find out any slot with car no and color code 
+	-- 	default case: Invalid Input -- Not expected, you may not allowed to enter beyond the score input.
+3) ParkingLot.java
+	-- This file is mainly responsible for implementation of all possible utilities in this project like:
+		--	availableSlotList: this is used to check for available slot list
+		--	map1: used for storing combination for slot with Car
+		--	map2: used for storing combination for regNo with slot
+		--	map2: used for storing combination for Color with List of RegNo
+		
+4) Commands.java
+	-- This file is mainly responsible for creating custom commands, so wheneven user will input the same defined method will get trigerred
+
+
+		
