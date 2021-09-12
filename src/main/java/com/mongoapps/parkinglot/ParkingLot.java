@@ -1,6 +1,8 @@
 package com.mongoapps.parkinglot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +11,13 @@ import java.util.Map;
  *
  */
 
-public class ParkingLot {
+public class ParkingLot implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	int MAX_SIZE = 0;
 
 	private class Car {
@@ -24,11 +32,11 @@ public class ParkingLot {
 
 	// availableSlotList: this is used to check for available slot list
 	ArrayList<Integer> availableSlotList;
-	//map1: for combination for slot with Car
+	// map1: for combination for slot with Car
 	Map<String, Car> map1;
-	//map2: for combination for regNo with slot
+	// map2: for combination for regNo with slot
 	Map<String, String> map2;
-	//map2: for combination for Color with List of RegNo
+	// map2: for combination for Color with List of RegNo
 	Map<String, ArrayList<String>> map3;
 
 	public void createParkingLot(String lotCount) {
@@ -51,6 +59,36 @@ public class ParkingLot {
 	}
 
 	public void park(String regNo, String color) {
+
+		if (this.MAX_SIZE == 0) {
+			System.out.println("Sorry!! Parking is not created");
+			System.out.println();
+		} else if (this.map1.size() == this.MAX_SIZE) {
+			System.out.println("Sorry!! Parking is full");
+		} else {
+			Collections.sort(availableSlotList);
+			String slot = availableSlotList.get(0).toString();
+			Car car = new Car(regNo, color);
+			this.map1.put(slot, car);
+			this.map2.put(regNo, slot);
+
+			if (this.map3.containsKey(color)) {
+				ArrayList<String> regNoList = this.map3.get(color);
+				this.map3.remove(color);
+				regNoList.add(regNo);
+				this.map3.put(color, regNoList);
+			} else {
+				ArrayList<String> regNoList = new ArrayList<String>();
+				regNoList.add(regNo);
+				this.map3.put(color, regNoList);
+			}
+
+			System.out.println("Allocated slot number: " + slot);
+			System.out.println();
+			availableSlotList.remove(0);
+
+		}
+
 	}
 
 	public void leave(String slotNo) {
