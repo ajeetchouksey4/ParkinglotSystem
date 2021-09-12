@@ -1,6 +1,5 @@
 package com.mongoapps.parkinglot;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -11,12 +10,7 @@ import java.util.Map;
  *
  */
 
-public class ParkingLot implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class ParkingLot {
 
 	int MAX_SIZE = 0;
 
@@ -39,6 +33,7 @@ public class ParkingLot implements Serializable {
 	// map2: for combination for Color with List of RegNo
 	Map<String, ArrayList<String>> map3;
 
+	
 	public void createParkingLot(String lotCount) {
 		try {
 			this.MAX_SIZE = Integer.parseInt(lotCount);
@@ -92,17 +87,109 @@ public class ParkingLot implements Serializable {
 	}
 
 	public void leave(String slotNo) {
+		if (this.MAX_SIZE == 0) {
+			System.out.println("Sorry!! Parking is not created");
+			System.out.println();
+		} else if (this.map1.size() > 0) {
+			Car carToLeave = this.map1.get(slotNo);
+			if (carToLeave != null) {
+				this.map1.remove(slotNo);
+				this.map2.remove(carToLeave.regNo);
+				ArrayList<String> regNoList = this.map3.get(carToLeave.color);
+				if (regNoList.contains(carToLeave.regNo)) {
+					regNoList.remove(carToLeave.regNo);
+				}
+				// Add the Lot No. back to available slot list.
+				this.availableSlotList.add(Integer.parseInt(slotNo));
+				System.out.println("Slot number " + slotNo + " is free");
+				System.out.println();
+			} else {
+				System.out.println("Slot number " + slotNo + " is already empty");
+				System.out.println();
+			}
+		} else {
+			System.out.println("Sorry!! Parking lot is empty");
+			System.out.println();
+		}
 	}
 
 	public void status() {
+		if (this.MAX_SIZE == 0) {
+			System.out.println("Sorry!! Parking is not created");
+			System.out.println();
+		} else if (this.map1.size() > 0) {
+			// Print the current status.
+			System.out.println("Slot No.\tRegistration No.\tColor");
+			Car car;
+			for (int i = 1; i <= this.MAX_SIZE; i++) {
+				String key = Integer.toString(i);
+				if (this.map1.containsKey(key)) {
+					car = this.map1.get(key);
+					System.out.println(i + "\t" + car.regNo + "\t" + car.color);
+				}
+			}
+			System.out.println();
+		} else {
+			System.out.println("Parking lot is empty");
+			System.out.println();
+		}
 	}
 
 	public void getRegistrationNumbersFromColor(String color) {
+		if (this.MAX_SIZE == 0) {
+			System.out.println("Sorry!! Parking is not created");
+			System.out.println();
+		} else if (this.map3.containsKey(color)) {
+			ArrayList<String> regNoList = this.map3.get(color);
+			System.out.println();
+			for (int i = 0; i < regNoList.size(); i++) {
+				if (!(i == regNoList.size() - 1)) {
+					System.out.print(regNoList.get(i) + ",");
+				} else {
+					System.out.print(regNoList.get(i));
+				}
+			}
+		} else {
+			System.out.println("Not found");
+			System.out.println();
+		}
 	}
 
 	public void getSlotNumbersFromColor(String color) {
+		if (this.MAX_SIZE == 0) {
+			System.out.println("Sorry!! Parking is not created");
+			System.out.println();
+		} else if (this.map3.containsKey(color)) {
+			ArrayList<String> regNoList = this.map3.get(color);
+			ArrayList<Integer> slotList = new ArrayList<Integer>();
+			System.out.println();
+			for (int i = 0; i < regNoList.size(); i++) {
+				slotList.add(Integer.valueOf(this.map2.get(regNoList.get(i))));
+			}
+			Collections.sort(slotList);
+			for (int j = 0; j < slotList.size(); j++) {
+				if (!(j == slotList.size() - 1)) {
+					System.out.print(slotList.get(j) + ",");
+				} else {
+					System.out.print(slotList.get(j));
+				}
+			}
+			System.out.println();
+		} else {
+			System.out.println("Not found");
+			System.out.println();
+		}
 	}
 
 	public void getSlotNumberFromRegNo(String regNo) {
+		if (this.MAX_SIZE == 0) {
+			System.out.println("Sorry!! Parking is not created");
+			System.out.println();
+		} else if (this.map2.containsKey(regNo)) {
+			System.out.println(this.map2.get(regNo));
+		} else {
+			System.out.println("Not found");
+			System.out.println();
+		}
 	}
 }
