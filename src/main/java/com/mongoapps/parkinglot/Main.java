@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 public class Main {
 	static FetchInput inputParser = new FetchInput();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
 		showWelcomeMessage();
 		showInputRefMessage();
@@ -28,6 +28,14 @@ public class Main {
 					BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
 					String inputString = bufferRead.readLine();
 					if (inputString.equalsIgnoreCase("exit")) {
+						Thread.sleep(500);
+						System.out.println("Thankyou for using Digital Car Parking System..!!");
+
+						Thread.sleep(500);
+						System.out.print("See you soon!!   ");
+
+						Thread.sleep(500);
+						System.out.println("Bye Bye");
 						break;
 					} else if ((inputString == null) || (inputString.isEmpty())) {
 						// Do nothing
@@ -40,8 +48,7 @@ public class Main {
 					e.printStackTrace();
 				}
 			}
-		
-		
+
 		}
 
 	}
