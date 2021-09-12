@@ -7,6 +7,7 @@ import java.util.Map;
 
 /**
  * @author Ajeet Chouksey
+ * 
  *
  */
 
@@ -33,7 +34,6 @@ public class ParkingLot {
 	// map2: for combination for Color with List of RegNo
 	Map<String, ArrayList<String>> map3;
 
-	
 	public void createParkingLot(String lotCount) {
 		try {
 			this.MAX_SIZE = Integer.parseInt(lotCount);

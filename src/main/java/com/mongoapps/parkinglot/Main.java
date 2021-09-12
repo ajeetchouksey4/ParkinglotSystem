@@ -38,10 +38,20 @@ public class Main {
 						System.out.println("Bye Bye");
 						break;
 					} else if ((inputString == null) || (inputString.isEmpty())) {
-						// Do nothing
+						System.out.println("Opps! we missed your input");
+						Thread.sleep(800);
+
+						System.out.println("Please Try Again...");
 					} else {
 						inputParser.parseTextInput(inputString.trim());
 					}
+
+//					else {
+//						System.out.println("Opps! we missed your input");
+//						Thread.sleep(800);
+//						
+//						System.out.println("Please Try Again...");
+//					}
 				} catch (IOException e) {
 					System.out.println("Oops! We're Sorry");
 					System.out.println("Something Went Wrong, Please re run the progrm");
