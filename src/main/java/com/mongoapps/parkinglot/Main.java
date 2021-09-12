@@ -35,17 +35,13 @@ public class Main {
 						inputParser.parseTextInput(inputString.trim());
 					}
 				} catch (IOException e) {
-					System.out.println("Oops! Error in reading the input from console.");
+					System.out.println("Oops! We're Sorry");
+					System.out.println("Something Went Wrong, Please re run the progrm");
 					e.printStackTrace();
 				}
 			}
-			break;
-		case 1:
-			// File input/output
-			// FetchInput.parseFileInput(args[0]);
-			break;
-		default:
-			System.out.println("Invalid input");
+		
+		
 		}
 
 	}
