@@ -29,6 +29,8 @@ public class Main {
 					String inputString = bufferRead.readLine();
 					if (inputString.equalsIgnoreCase("exit")) {
 						break;
+					} else if ((inputString == null) || (inputString.isEmpty())) {
+						// Do nothing
 					} else {
 						inputParser.parseTextInput(inputString.trim());
 					}

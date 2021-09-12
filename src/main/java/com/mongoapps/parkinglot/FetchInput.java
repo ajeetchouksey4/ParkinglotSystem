@@ -1,9 +1,17 @@
 package com.mongoapps.parkinglot;
 
 public class FetchInput {
-
-	public void parseTextInput(String trim) {
-		// TODO Auto-generated method stub
+	Commands commands;
+	
+	public void parseTextInput(String inputString) {
+		
+		String[] inputs = inputString.split(" ");
+		switch(inputs.length){
+		case 1:
+			try {
+				Method method = commands.commandsMap.get(inputString);
+			}
+		}
 		
 	}
 
